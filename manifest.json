@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Dictionary Highlighter",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "downloads",
+    "activeTab",
+    "scripting",
+    "contextMenus"
+  ],
+  "host_permissions": ["http://localhost/*", "https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["popup.html"]
+    }
+  ]
+}
